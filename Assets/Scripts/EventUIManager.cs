@@ -21,4 +21,9 @@ public class EventUIManager : MonoBehaviour
     {
         SceneManager.LoadScene("Location-basedGame");
     }
+
+    public void OnScanClick()
+    {
+        SceneManager.LoadScene("CameraScan");
+    }
 }

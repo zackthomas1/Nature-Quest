@@ -6,12 +6,13 @@
 	using System.Collections.Generic;
 	using UnityEngine;
 	using UnityEngine.UI;
+	using TMPro;
 
 	public class LocationStatus : MonoBehaviour
 	{
 
 		[SerializeField]
-		Text _statusText;
+		TextMeshProUGUI _statusText;
 
 		private AbstractLocationProvider _locationProvider = null;
 		Location currLoc;

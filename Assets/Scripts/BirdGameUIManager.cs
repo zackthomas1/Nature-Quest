@@ -23,8 +23,12 @@ public class BirdGameUIManager : MonoBehaviour
     private int countBirdCall = 0;
     private bool gameRunning = false;
 
+    private void OnEnable()
+    {
+        // Reset to the first page every time this UI is enabled.
+        ShowPage(1);
+    }
 
-    
     void Start()
     {
         // Show page 1 and hide others at start.

@@ -8,6 +8,7 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField] private GameObject ExplorePanel_NotInRange;
     [SerializeField] private EventManager eventManager;
     [SerializeField] private GameObject birdGameCanvas;
+    [SerializeField] private GameObject matchGameCanvas; //make sure this works
     bool isUIPanelActive;
     int tempEvent;
     private string currentGameIdentifier; // This will store "Bird" or "Oak" etc.
@@ -64,6 +65,19 @@ public class MenuUIManager : MonoBehaviour
             {
                 //Debug.Log("Clicked!");
                 birdGameCanvas.SetActive(true);
+            }
+        }
+        else if (currentGameIdentifier == "Match")
+        {
+            //Debug.Log("Clicked!");
+            // Close the current ExplorePanel
+            ExplorePanel_InRange.SetActive(false);
+
+            // Open the Bird Game UI.
+            if (matchGameCanvas != null)
+            {
+                //Debug.Log("Clicked!");
+                matchGameCanvas.SetActive(true);
             }
         }
         else

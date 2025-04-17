@@ -16,9 +16,13 @@ public class OakTreePointer : MonoBehaviour
     
     public Vector2d eventPos;
     public int eventID;
+
+    [SerializeField] private string gameIdentifier;
+
     private MenuUIManager menuUIManager;
     private EventManager eventManager;
     // Start is called before the first frame update
+
     void Start()
     {
         menuUIManager = GameObject.Find("Canvas").GetComponent<MenuUIManager>();
@@ -49,14 +53,17 @@ public class OakTreePointer : MonoBehaviour
         var distance = currentPlayerLocation.GetDistanceTo(eventLocation);
         //Debug.Log("Distance is: " + distance);
         //Debug.Log("Clicked!");
-        if(distance < eventManager.maxDistance)
+        if (distance < eventManager.maxDistance)
         {
-            menuUIManager.DisplayInRangePanel(eventID);
+            // Here you have both eventID and gameIdentifier available to choose how to proceed:
+            // For example, you can pass both to the UI manager.
+            menuUIManager.DisplayInRangePanel(eventID, gameIdentifier);
         }
         else
         {
             menuUIManager.DisplayNotInRangePanel();
         }
+
 
     }
 }

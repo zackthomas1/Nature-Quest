@@ -101,6 +101,11 @@ MonoBehaviour:
   amplitude: 0.1
   frequency: 0.5
   yOffset: -0.05
+  eventPos:
+    x: 0
+    y: 0
+  eventID: 0
+  gameIdentifier: Oak
 --- !u!136 &-8844009504326841080
 CapsuleCollider:
   m_ObjectHideFlags: 0

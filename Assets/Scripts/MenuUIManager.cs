@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MenuUIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject ScannerPanel_InRange;
-    [SerializeField] private GameObject ScannerPanel_NotInRange;
+    [SerializeField] private GameObject ExplorePanel_InRange;
+    [SerializeField] private GameObject ExplorePanel_NotInRange;
     [SerializeField] private EventManager eventManager;
     bool isUIPanelActive;
     int tempEvent;
@@ -22,34 +22,34 @@ public class MenuUIManager : MonoBehaviour
         
     }
 
+    public void OnJoinClick()
+    {
+        eventManager.ActivateEvent(tempEvent);
+    }
+
     public void DisplayInRangePanel(int eventID)
     {
         if(isUIPanelActive == false)
         {
             tempEvent = eventID;
-            ScannerPanel_InRange.SetActive(true);
+            ExplorePanel_InRange.SetActive(true);
             isUIPanelActive = true;
         }
-    }
-
-    public void OnJoinClick()
-    {
-        eventManager.ActivateEvent(tempEvent);
     }
 
     public void DisplayNotInRangePanel()
     {
         if(isUIPanelActive == false)
         {
-            ScannerPanel_NotInRange.SetActive(true);
+            ExplorePanel_NotInRange.SetActive(true);
             isUIPanelActive = true;
         }
     }
 
-    public void CloseButtonClick()
+    public void CloseExplorePanel()
     {
-        ScannerPanel_InRange.SetActive(false);
-        ScannerPanel_NotInRange.SetActive(false);
+        ExplorePanel_InRange.SetActive(false);
+        ExplorePanel_NotInRange.SetActive(false);
         isUIPanelActive = false;
     }
 }

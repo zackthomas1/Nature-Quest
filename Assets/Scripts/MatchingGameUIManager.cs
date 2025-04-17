@@ -23,11 +23,17 @@ public class MatchingGameUIManager : MonoBehaviour
         ShowPage(1);
     }
 
+    public void OnInstructionsButton()
+    {
+        Debug.Log("Clicked!");
+        ShowPage(2);
+    }
+
     // Called by the "Next" button on Page 1 (Instructions) to move to Page 2 (Game).
     public void OnPlayGameButton() //Change to OnPlayGameButton
     {
         Debug.Log("Clicked!");
-        ShowPage(2);
+        ShowPage(3);
     }
 
     // Called by the "Play Game" button on Page 2 to move to Page 3.
@@ -61,7 +67,7 @@ public class MatchingGameUIManager : MonoBehaviour
         // Ensure all pages are disabled first.
         page1.SetActive(false);
         page2.SetActive(false);
-        //page3.SetActive(false);
+        page3.SetActive(false);
         page4.SetActive(false);
         page5.SetActive(false);
 

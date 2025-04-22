@@ -7,7 +7,7 @@ using Mapbox.Examples;
 
 public class OakTreePointer : MonoBehaviour
 {
-    [SerializeField] private float rotationSpeed = 30.0f; // Slower rotation speed
+    [SerializeField] private float rotationSpeed = 30.0f;   // Slower rotation speed
     [SerializeField] private float amplitude = 0.2f;        // Increased bobbing amplitude
     [SerializeField] private float frequency = 0.5f;        // Bobbing frequency remains the same
     [SerializeField] private float yOffset = -0.1f;         // Offset to ensure it dips slightly into the ground

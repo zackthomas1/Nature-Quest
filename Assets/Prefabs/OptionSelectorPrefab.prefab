@@ -146,7 +146,6 @@ GameObject:
   - component: {fileID: 1659939785075976799}
   - component: {fileID: 3683386130907881043}
   - component: {fileID: 8015999793964908559}
-  - component: {fileID: 4427346658627365082}
   m_Layer: 5
   m_Name: OptionSelectorPrefab
   m_TagString: Untagged
@@ -225,23 +224,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   descriptor: NULL
---- !u!114 &4427346658627365082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6804360978152948762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8585807326df484b9ccdd06bf24dd28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  height: 10
-  direction: {x: 0, y: 1, z: 0}
-  anchorMin: {x: 0, y: 0.9}
-  anchorMax: {x: 0.4, y: 1}
 --- !u!1 &8240139272155265028
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,6 +236,7 @@ GameObject:
   - component: {fileID: 3080218617674145928}
   - component: {fileID: 788290258662354741}
   - component: {fileID: 2053913436211352347}
+  - component: {fileID: 7556436694393267538}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -280,7 +263,7 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3080218617674145928
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -375,3 +358,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7556436694393267538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8240139272155265028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8585807326df484b9ccdd06bf24dd28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  height: 10
+  wobbleSpeed: 1.5
+  wobbleAngle: 5
+  direction: {x: 0.15, y: 1}

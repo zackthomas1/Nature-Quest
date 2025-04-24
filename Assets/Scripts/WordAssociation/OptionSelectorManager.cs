@@ -23,21 +23,17 @@ public class OptionSelectorManager : MonoBehaviour
 
         // Set default text mesh state
         TextMeshProUGUI textComponent = transform.Find("Button/Text")?.GetComponent<TextMeshProUGUI>();
-        if (textComponent != null)
-        {
-            textComponent.text = descriptor;
-            textComponent.fontStyle = FontStyles.Normal;
+        Debug.Assert(textComponent != null, "TextMeshProUGUI component not found on child named 'Text'.");
+        if (textComponent == null ) return;
 
-            // Enable auto-sizing
-            textComponent.enableAutoSizing = true;
+        textComponent.text = descriptor;
+        textComponent.fontStyle = FontStyles.Normal;
 
-            defaultMinSize = textComponent.fontSizeMin;
-            defaultMaxSize = textComponent.fontSizeMax;
-        }
-        else
-        {
-            Debug.LogWarning("TextMeshProUGUI component not found on child named 'Text'.");
-        }
+        // Enable auto-sizing
+        textComponent.enableAutoSizing = true;
+
+        defaultMinSize = textComponent.fontSizeMin;
+        defaultMaxSize = textComponent.fontSizeMax;
     }
 
     public void UpdateSelection()
@@ -53,43 +49,29 @@ public class OptionSelectorManager : MonoBehaviour
             SetDeselectTextStyle();
             wordAssociationUIManager.RemoveDescriptorToSelections(descriptor.ToLower());
         }
-
-
     }
 
     private void SetSelectTextStyle()
     {
         TextMeshProUGUI textComponent = transform.Find("Button/Text")?.GetComponent<TextMeshProUGUI>();
-        if (textComponent != null)
-        {
-            textComponent.text = textComponent.text.ToUpper();
-            textComponent.fontStyle = FontStyles.Bold;
-            textComponent.fontSizeMin = defaultMinSize+8;
-            textComponent.fontSizeMax = defaultMaxSize+8;
-        }
-        else
-        {
-            Debug.LogWarning("TextMeshProUGUI component not found on child named 'Text'.");
-        }
+        Debug.Assert(textComponent != null, "TextMeshProUGUI component not found on child named 'Text'.");
+        if (textComponent == null) return;
+
+        textComponent.text = textComponent.text.ToUpper();
+        textComponent.fontStyle = FontStyles.Bold;
+        textComponent.fontSizeMin = defaultMinSize+8;
+        textComponent.fontSizeMax = defaultMaxSize+8;
     }
 
     private void SetDeselectTextStyle()
     {
         TextMeshProUGUI textComponent = transform.Find("Button/Text")?.GetComponent<TextMeshProUGUI>();
-        if (textComponent != null)
-        {
-            textComponent.text = textComponent.text.ToLower();
-            textComponent.fontStyle = FontStyles.Normal;
-            textComponent.fontSizeMin = defaultMinSize;
-            textComponent.fontSizeMax = defaultMaxSize;
-        }
-        else
-        {
-            Debug.LogWarning("TextMeshProUGUI component not found on child named 'Text'.");
-        }
+        Debug.Assert(textComponent != null, "TextMeshProUGUI component not found on child named 'Text'.");
+        if (textComponent == null) return;
+
+        textComponent.text = textComponent.text.ToLower();
+        textComponent.fontStyle = FontStyles.Normal;
+        textComponent.fontSizeMin = defaultMinSize;
+        textComponent.fontSizeMax = defaultMaxSize;
     }
-
-
-
-
 }

@@ -5,28 +5,34 @@ using UnityEngine;
 public class FloatAnimation : MonoBehaviour
 {
 
-    public float speed = 1f;
-    public float height = 10f;
-    [SerializeField] private Vector3 direction;
-    
-    private RectTransform parentRect;
-    private RectTransform rectTransform;
+    [SerializeField] private float speed = 1f;
+    [SerializeField] private float height = 10f;
+    [SerializeField] private float wobbleSpeed = 1.5f;
+    [SerializeField] private float wobbleAngle = 5f;
+    [SerializeField] private Vector2 direction = new Vector2(0f,1f);
+
+    private Vector2 startPos;
+    private float phaseOffset;
+    private RectTransform rectTransform;   
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        parentRect = transform.parent.GetComponent<RectTransform>();
-        
         rectTransform = GetComponent<RectTransform>();
-        rectTransform.offsetMin = new Vector2(0, 0);
-        rectTransform.offsetMax = new Vector2(0, 0);
+        startPos = rectTransform.anchoredPosition;
+
+        phaseOffset = Random.Range(0f, Mathf.PI * 2);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //transform.localPosition = Mathf.Sin(Time.time * speed) * (height * direction);
-        Debug.Log("transform.localPosition" + transform.localPosition);
+        // floating effect
+        Vector2 offset = Mathf.Sin(Time.time * speed + phaseOffset) * (height * direction);
+        rectTransform.anchoredPosition = startPos + offset;
 
+        // Wobble effect
+        float zRotation = Mathf.Sin(Time.time * wobbleSpeed + phaseOffset) * wobbleAngle;
+        rectTransform.localRotation = Quaternion.Euler(0f, 0f, zRotation);
     }
 }

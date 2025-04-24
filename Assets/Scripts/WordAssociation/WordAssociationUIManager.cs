@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class WordAssociationUIManager : MonoBehaviour
@@ -15,6 +16,8 @@ public class WordAssociationUIManager : MonoBehaviour
     [SerializeField] private GameObject InstructionPanel;
     [SerializeField] private GameObject MiniGamePanel;
     [SerializeField] private GameObject SummaryPanel;
+    [SerializeField] private GameObject HelpPanel;
+
 
     [Header("Game Data")]
     [SerializeField] private SpeciesData currentSpecies;
@@ -29,12 +32,15 @@ public class WordAssociationUIManager : MonoBehaviour
         Debug.Log("Word Association Minigame Start!");
 
         SpawnOptionSelectors();
-
-
-        MiniGamePanel.SetActive(true);
+        ShowInstructionPanel();
+    }
+    public void ShowInstructionPanel()
+    {
+        Debug.Log("Show instruction panel");
         InstructionPanel.SetActive(true);
         MiniGamePanel.SetActive(false);
         SummaryPanel.SetActive(false);
+        HelpPanel.SetActive(false);
     }
 
     public void ShowMiniGamePanel()
@@ -43,6 +49,7 @@ public class WordAssociationUIManager : MonoBehaviour
         InstructionPanel.SetActive(false);
         MiniGamePanel.SetActive(true);
         SummaryPanel.SetActive(false);
+        HelpPanel.SetActive(false);
     }
 
     public void ShowSummaryPanel()
@@ -51,6 +58,7 @@ public class WordAssociationUIManager : MonoBehaviour
         InstructionPanel.SetActive(false);
         MiniGamePanel.SetActive(false);
         SummaryPanel.SetActive(true);
+        HelpPanel.SetActive(false);
 
         string FormatList(List<string> items)
         {
@@ -62,11 +70,8 @@ public class WordAssociationUIManager : MonoBehaviour
         }
 
         TextMeshProUGUI textComponent = transform.Find("SummaryPanel/VerticalPanel/BodyPanel/ContentPanel/TextPanel/Text")?.GetComponent<TextMeshProUGUI>();
-        if (textComponent == null)
-        {
-            Debug.LogWarning("TextMeshProUGUI component not found on child named 'Text'.");
-            return;
-        }
+        Debug.Assert(textComponent != null, "TextMeshProUGUI component not found on child named 'Text'.");
+        if (textComponent == null) return;
 
         string traits = FormatList(currentSpecies.traits);
 
@@ -82,7 +87,14 @@ public class WordAssociationUIManager : MonoBehaviour
 
     public void ShowHelpPanel()
     {
+        HelpPanel.SetActive(true);
         Debug.Log("Show Help Panel");
+    }
+
+    public void HideHelpPanel()
+    {
+        HelpPanel.SetActive(false);
+        Debug.Log("Hide Help Panel");
     }
 
     public void LoadLocationScene()
@@ -117,27 +129,32 @@ public class WordAssociationUIManager : MonoBehaviour
     private void SpawnOptionSelectors()
     {
         Transform container = transform.Find("WordAssociationPanel/VerticalPanel/BodyPanel/CloudPanel/VerticalPanel");
-        if (container == null)
-        {
-            Debug.LogWarning("BodyContainer GameObject not found on Canvas");
-            return;
-        }
+        Debug.Assert(container != null, "Container Panel GameObject not found on Canvas");
+        if (container == null) return;
 
+        const int itemsPerRow = 3;
+        GameObject currentRow = null;
         for (int i = 0; i < options.traits.Count; i++)
         {
-            string trait = options.traits[i];
+            if(i % itemsPerRow == 0)
+            {
+                // start new row panel
+                currentRow = new GameObject("RowPanel", typeof(RectTransform), typeof(HorizontalLayoutGroup));
+                currentRow.transform.SetParent(container, false);
 
-            // instantiate the prefab 
-            GameObject instance = Instantiate(optionSelectorPrefab, container, false);
+                // Optional: Style row panel
+                RectTransform rowRect = currentRow.GetComponent<RectTransform>();
+                rowRect.sizeDelta = new Vector2 (0, 100);
+            
+                HorizontalLayoutGroup layout = currentRow.GetComponent<HorizontalLayoutGroup>();
+                layout.childForceExpandHeight = true;
+                layout.childForceExpandWidth = true;
+                layout.spacing = 10f;
+            }
 
-            // set selector text
-            instance.GetComponent<OptionSelectorManager>().Initialize(trait, this);
-            
-            //
-            //RectTransform rectTransform = instance.GetComponent<RectTransform>();
-            //rectTransform.anchorMin = new Vector2(portion, 0.9f);
-            //rectTransform.anchorMax = new Vector2(0.4f + portion, 1f);
-            
+            // Instantiate and initialize the OptionSelector
+            GameObject instance = Instantiate(optionSelectorPrefab, currentRow.transform, false);
+            instance.GetComponent<OptionSelectorManager>().Initialize(options.traits[i], this);            
         }
     }
 }

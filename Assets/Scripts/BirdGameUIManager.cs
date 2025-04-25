@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System;
+using TMPro;
 
 public class BirdGameUIManager : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class BirdGameUIManager : MonoBehaviour
     [SerializeField] private GameObject RR;
     [SerializeField] private GameObject TH;
     [SerializeField] private GameObject ST;
-    [SerializeField] private GameObject BP;
+    [SerializeField] private GameObject MB;
 
     [Header("Page 3 Elements")]
     [SerializeField] private Text timerText;
@@ -26,7 +27,7 @@ public class BirdGameUIManager : MonoBehaviour
     [SerializeField] private float gameDuration = 10f; // 10 seconds game duration FOR NOW
 
     [Header("Page 4 Elements")]
-    [SerializeField] private Text resultText;
+    [SerializeField] private TMP_Text result;
 
     private float currentTime;
     private int countBirdCall = 0;
@@ -46,7 +47,7 @@ public class BirdGameUIManager : MonoBehaviour
 
     public void OnBack()
     {
-        ShowPage(1);
+        ShowPage(2);
     }
 
     // Called by the "Next" button on Page 1 to move to Page 2.
@@ -108,7 +109,7 @@ public class BirdGameUIManager : MonoBehaviour
         RR.SetActive(false);
         TH.SetActive(false);
         ST.SetActive(false);
-        BP.SetActive(false);
+        MB.SetActive(false);
 
 
         // Activate the requested page.
@@ -167,10 +168,18 @@ public class BirdGameUIManager : MonoBehaviour
 
     private void EndBirdGame()
     {
-        // When time is up, transition to page 4 and show result.
-        Debug.Log("Game over. Total counts: " + countBirdCall);
-        resultText.text = "You counted: " + countBirdCall + " calls!";
+
         ShowPage(4);
+
+        if (countBirdCall == 0)
+            result.text =
+                "0 calls? That’s good to know... I guess we shouldn’t form the choir. Thanks for your help!";
+        else if (countBirdCall == 1)
+            result.text =
+                "1 call? That’s not enough for a choir... Good to know. Thanks for your help!";
+        else
+            result.text =
+                $"{countBirdCall} calls? That’s a lot! Maybe we should form the choir after all. Thanks for your help!";
     }
 
     public void OnCaliforniaGnatcatcher()
@@ -200,7 +209,7 @@ public class BirdGameUIManager : MonoBehaviour
         ShowBirdPage(6);
     }
 
-    public void OnBlackPheobe()
+    public void OnMockingbird()
     {
         ShowBirdPage(7);
     }
@@ -214,7 +223,7 @@ public class BirdGameUIManager : MonoBehaviour
         RR.SetActive(false);
         TH.SetActive(false);
         ST.SetActive(false);
-        BP.SetActive(false);
+        MB.SetActive(false);
 
         switch (pageNumber)
         {
@@ -237,7 +246,7 @@ public class BirdGameUIManager : MonoBehaviour
                 ST.SetActive(true);
                 break;
             case 7:
-                BP.SetActive(true);
+                MB.SetActive(true);
                 break;
 
         }

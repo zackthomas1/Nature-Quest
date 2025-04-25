@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 471828}
   - component: {fileID: 3384114}
   - component: {fileID: 2377290}
+  - component: {fileID: -1205217066490827095}
   - component: {fileID: -5381243872845788236}
   - component: {fileID: 7803790571872149464}
   m_Layer: 0
@@ -85,6 +86,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-1205217066490827095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b45e7c8be1287d41833dbdbf6a6d2a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 30
+  amplitude: 0.2
+  frequency: 0.5
+  yOffset: -0.1
+  eventPos:
+    x: 0
+    y: 0
+  eventID: 0
+  gameIdentifier: Bird
 --- !u!114 &-5381243872845788236
 MonoBehaviour:
   m_ObjectHideFlags: 0

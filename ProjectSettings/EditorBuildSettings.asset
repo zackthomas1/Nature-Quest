@@ -14,12 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WordAssociationScene.unity
     guid: 2081056977291d14491a688758c93118
-  - enabled: 0
-    path: Assets/Scenes/OakTree1.unity
-    guid: 50566607443ab2e4bbe680fa78a38f78
-  - enabled: 0
-    path: Assets/Scenes/CameraScan.unity
-    guid: 5e0e7e7b6cc176c41b20dee8e02f260a
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 08d6e33000550ad49b19e6bdb22d69f8, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: f870fdf339701764ba4212b7b6003291, type: 2}

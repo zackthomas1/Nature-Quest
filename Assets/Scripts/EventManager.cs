@@ -21,7 +21,7 @@ public class EventManager : MonoBehaviour
     {
         if(eventID == 1)
         {
-            SceneManager.LoadScene("OakTree1");
+            SceneManager.LoadScene("WordAssociationScene");
         }
     }
 }

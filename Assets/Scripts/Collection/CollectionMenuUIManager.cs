@@ -20,12 +20,6 @@ public class CollectionUIManager : MonoBehaviour
         SpawnBadges();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void LoadLocationScene()
     {
         Debug.Log("Closing collection. Load LocationScene");
@@ -60,6 +54,19 @@ public class CollectionUIManager : MonoBehaviour
 
             GameObject badge = Instantiate(sproutBadgePrefab, currentRow.transform);
             badgeList.Add(badge);
+
+            // Set image if sprout exists
+            if (i < sproutDataList.Count)
+            {
+                badge.GetComponent<Badge>().Unlock(sproutDataList[i]);
+
+                //int index = i; // Closure fix
+                //badge.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => ShowTradingCard(index));
+            }
         }
+    }
+    public void DisplayTradingCard(SproutData data)
+    {
+        Debug.Log("Display Trading Card");
     }
 }

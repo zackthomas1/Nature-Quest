@@ -19,9 +19,6 @@ public class CollectionUIManager : MonoBehaviour
     [SerializeField] private GameObject sproutImage;
     [SerializeField] private GameObject statsText;
 
-    [Header("Data list")]
-    [SerializeField] private List<SproutData> sproutDataList;
-
     private List<GameObject> badgeList = new List<GameObject>();
     private int badgeListSize = 12;
 
@@ -40,6 +37,9 @@ public class CollectionUIManager : MonoBehaviour
 
     public void SpawnBadges()
     {
+
+        List<SproutData> unlockedSprouts = GameManager.Instance.unlockedSprouts;
+
         // Clear existing badges (if any)
         foreach (Transform child in parentTransform)
         {
@@ -68,9 +68,9 @@ public class CollectionUIManager : MonoBehaviour
             badgeList.Add(badge);
 
             // Set image if sprout exists
-            if (i < sproutDataList.Count)
+            if (i < unlockedSprouts.Count)
             {
-                badge.GetComponent<Badge>().Unlock(sproutDataList[i]);
+                badge.GetComponent<Badge>().Unlock(unlockedSprouts[i]);
 
                 //int index = i; // Closure fix
                 //badge.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => ShowTradingCard(index));

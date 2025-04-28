@@ -1,14 +1,25 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CollectionUIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject sproutBadgePrefab;
+    [Header("UI Panels")]
+    [SerializeField] private GameObject CollectionPanel;
+    [SerializeField] private GameObject TradingCardPanel;
+
+    [Header("Badge")]
     [SerializeField] private Transform parentTransform; // Parent with Grid/Vertical Layout
+    [SerializeField] private GameObject sproutBadgePrefab;
+
+    [Header("Trading Card")]
+    [SerializeField] private GameObject namePlateText;
+    [SerializeField] private GameObject sproutImage;
+    [SerializeField] private GameObject statsText;
+
+    [Header("Data list")]
     [SerializeField] private List<SproutData> sproutDataList;
 
     private List<GameObject> badgeList = new List<GameObject>();
@@ -17,6 +28,7 @@ public class CollectionUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DisplayCollectioPanel();
         SpawnBadges();
     }
 
@@ -65,8 +77,29 @@ public class CollectionUIManager : MonoBehaviour
             }
         }
     }
-    public void DisplayTradingCard(SproutData data)
+
+    public void DisplayCollectioPanel()
+    {
+        Debug.Log("Display Collection");
+        CollectionPanel.SetActive(true);
+        TradingCardPanel.SetActive(false);
+    }
+
+    public void DisplayTradingCardPanel(SproutData data)
     {
         Debug.Log("Display Trading Card");
+        CollectionPanel.SetActive(false);
+        TradingCardPanel.SetActive(true);
+
+        TextMeshProUGUI namePlateTextComponent = namePlateText.GetComponent<TextMeshProUGUI>();
+        namePlateTextComponent.text = $"{data.sName}";
+
+        Image sproutImageComponent = sproutImage.GetComponent<Image>();
+        sproutImageComponent.sprite = data.cardImage;
+
+        TextMeshProUGUI statsTextComponent = statsText.GetComponent<TextMeshProUGUI>();
+        statsTextComponent.text = $"{data.details}\nBirthday - {data.birthday}\nAge - {data.age}\nPersonality - {data.personality}\nFavorite Food - {data.favoriteFood}";
+
+
     }
 }

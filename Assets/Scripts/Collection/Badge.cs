@@ -26,6 +26,6 @@ public class Badge : MonoBehaviour
 
     public void OnClick()
     {
-        menuUIManager.DisplayTradingCard(sproutData);
+        menuUIManager.DisplayTradingCardPanel(sproutData);
     }
 }

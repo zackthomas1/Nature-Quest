@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1849c44b605d89b418233ebe83eee1c5, type: 3}
-  m_Name: PlantSproutData
+  m_Name: sprigData
   m_EditorClassIdentifier: 
-  sName: Plant
-  birthday: March 27th
-  age: 2
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua.
-  personality: optimistic
-  favoriteFood: popcorn
-  cardImage: {fileID: 21300000, guid: 677d42283d66f664aad893bc883ba970, type: 3}
   badgeImage: {fileID: 21300000, guid: 1f98a545d2958dc478aa6bf3bbdb8348, type: 3}
+  cardImage: {fileID: 21300000, guid: 4035823b62a8efd4d80353407360f93c, type: 3}
+  sName: Sprig
+  details: This sprout grows quickly and loves racing toward the sun!
+  birthday: May 2nd
+  age: 2 months
+  personality: Energetic
+  favoriteFood: Green Apples

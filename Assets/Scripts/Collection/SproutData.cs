@@ -6,12 +6,13 @@ using UnityEngine;
 
 public class SproutData : ScriptableObject
 {
+    public Sprite badgeImage;
+    public Sprite cardImage;
     public string sName;
+    public string details;
     public string birthday;
-    public int age;
-    public string description;
+    public string age;
     public string personality;
     public string favoriteFood;
-    public Sprite cardImage;
-    public Sprite badgeImage;
+
 }

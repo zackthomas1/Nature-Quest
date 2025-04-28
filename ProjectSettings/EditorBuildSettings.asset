@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LocationScene.unity
     guid: 42f6aa7ce7a604f16ade319663f46ceb
   - enabled: 1
+    path: Assets/Scenes/CollectionScene.unity
+    guid: 188e4dca645493748a0e8779353e8354
+  - enabled: 1
     path: Assets/Scenes/WordAssociationScene.unity
     guid: 2081056977291d14491a688758c93118
   m_configObjects:

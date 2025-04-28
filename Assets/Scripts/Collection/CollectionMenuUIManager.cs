@@ -21,11 +21,15 @@ public class CollectionUIManager : MonoBehaviour
 
     private List<GameObject> badgeList = new List<GameObject>();
     private int badgeListSize = 12;
+    private bool isGameManagerValid;
+    private List<SproutData> unlockedSprouts;
 
     // Start is called before the first frame update
     void Start()
     {
         DisplayCollectioPanel();
+        isGameManagerValid = GameManager.Instance != null;
+        if(isGameManagerValid) unlockedSprouts = GameManager.Instance.unlockedSprouts;
         SpawnBadges();
     }
 
@@ -37,8 +41,6 @@ public class CollectionUIManager : MonoBehaviour
 
     public void SpawnBadges()
     {
-
-        List<SproutData> unlockedSprouts = GameManager.Instance.unlockedSprouts;
 
         // Clear existing badges (if any)
         foreach (Transform child in parentTransform)
@@ -68,7 +70,7 @@ public class CollectionUIManager : MonoBehaviour
             badgeList.Add(badge);
 
             // Set image if sprout exists
-            if (i < unlockedSprouts.Count)
+            if ( isGameManagerValid && i < unlockedSprouts.Count)
             {
                 badge.GetComponent<Badge>().Unlock(unlockedSprouts[i]);
 

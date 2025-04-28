@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 public class Badge : MonoBehaviour
 {
-    private SproutData sproutData;
     private CollectionUIManager menuUIManager;
+    private SproutData sproutData;
 
     // Start is called before the first frame update
     void Start()
     {
         menuUIManager = GameObject.Find("Canvas").GetComponent<CollectionUIManager>();
     }
+
     public void Unlock(SproutData data)
     {
         sproutData = data;
@@ -26,6 +27,11 @@ public class Badge : MonoBehaviour
 
     public void OnClick()
     {
+        if (sproutData == null)
+        {
+            Debug.Log("Badge locked. (sprout data NULL");
+            return;
+        }
         menuUIManager.DisplayTradingCardPanel(sproutData);
     }
 }

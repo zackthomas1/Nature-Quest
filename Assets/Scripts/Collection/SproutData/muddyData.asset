@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1849c44b605d89b418233ebe83eee1c5, type: 3}
   m_Name: muddyData
   m_EditorClassIdentifier: 
-  badgeImage: {fileID: 21300000, guid: 1f98a545d2958dc478aa6bf3bbdb8348, type: 3}
+  badgeImage: {fileID: 21300000, guid: 0219ef59b65ef614d9c65e4dafebe5f5, type: 3}
   cardImage: {fileID: 21300000, guid: fbc3eb04bf9188845a5d60b3fb59ee53, type: 3}
   sName: Muddy
   details: This sprout loves splashing in puddles and making new friends in the mud!

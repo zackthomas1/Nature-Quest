@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1849c44b605d89b418233ebe83eee1c5, type: 3}
   m_Name: sprigData
   m_EditorClassIdentifier: 
-  badgeImage: {fileID: 21300000, guid: 1f98a545d2958dc478aa6bf3bbdb8348, type: 3}
+  badgeImage: {fileID: 21300000, guid: 6d1e00d86036c6049861ca8dcd44a168, type: 3}
   cardImage: {fileID: 21300000, guid: 4035823b62a8efd4d80353407360f93c, type: 3}
   sName: Sprig
   details: This sprout grows quickly and loves racing toward the sun!

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuUIManager : MonoBehaviour
 {
@@ -56,16 +57,8 @@ public class MenuUIManager : MonoBehaviour
         //for now just testing bird
         if (currentGameIdentifier == "Bird")
         {
-            //Debug.Log("Clicked!");
-            // Close the current ExplorePanel
             ExplorePanel_InRange.SetActive(false);
-
-            // Open the Bird Game UI.
-            if (birdGameCanvas != null)
-            {
-                //Debug.Log("Clicked!");
-                birdGameCanvas.SetActive(true);
-            }
+            SceneManager.LoadSceneAsync("BirdGameScene", LoadSceneMode.Single);
         }
         else if (currentGameIdentifier == "Match")
         {

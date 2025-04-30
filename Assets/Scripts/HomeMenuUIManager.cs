@@ -7,17 +7,13 @@ public class HomeMenuUIManager : MonoBehaviour
 {
     [SerializeField] private GameObject HomePanel;
     [SerializeField] private GameObject HelpPanel;
+    [SerializeField] private GameObject WarningPanel;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        ShowHomePanel();
     }
 
     public void GoToScene(string sceneName)
@@ -26,9 +22,24 @@ public class HomeMenuUIManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    public void SetActiveHelpPanel(bool isHelpPanelActive)
+    public void ShowHomePanel()
     {
-        HomePanel.SetActive(!isHelpPanelActive);
-        HelpPanel.SetActive(isHelpPanelActive);
+        HomePanel.SetActive(true);
+        HelpPanel.SetActive(false);
+        WarningPanel.SetActive(false);
+    }
+
+    public void ShowHelpPanel()
+    {
+        HomePanel.SetActive(false);
+        HelpPanel.SetActive(true);
+        WarningPanel.SetActive(false);
+    }
+
+    public void ShowWarningPanel()
+    {
+        HomePanel.SetActive(false);
+        HelpPanel.SetActive(false);
+        WarningPanel.SetActive(true);
     }
 }

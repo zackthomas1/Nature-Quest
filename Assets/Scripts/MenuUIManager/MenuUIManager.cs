@@ -57,19 +57,8 @@ public class MenuUIManager : MonoBehaviour
         //for now just testing bird
         if (currentGameIdentifier == "Bird")
         {
-            //Debug.Log("Clicked!");
-            // Close the current ExplorePanel
             ExplorePanel_InRange.SetActive(false);
             SceneManager.LoadSceneAsync("BirdGameScene", LoadSceneMode.Single);
-            /*
-            // Open the Bird Game UI.
-            if (birdGameCanvas != null)
-            {
-                //Debug.Log("Clicked!");
-
-                birdGameCanvas.SetActive(true);
-            }
-            */
         }
         else if (currentGameIdentifier == "Match")
         {

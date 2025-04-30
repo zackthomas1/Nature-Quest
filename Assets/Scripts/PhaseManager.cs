@@ -19,7 +19,7 @@ public class PhaseManager : MonoBehaviour
     [SerializeField] private Button submitButton; // Reference to the submit button
     [SerializeField] private TextMeshProUGUI resultsText; // Changed to TextMeshProUGUI
     [SerializeField] private GameObject resultsPage; // Reference to the results page
-    private PhaseGroup currentlySelectedPhase;
+    private List<PhaseGroup> selectedPhases = new List<PhaseGroup>(); // Changed to track multiple selections
 
     private void Start()
     {
@@ -39,8 +39,8 @@ public class PhaseManager : MonoBehaviour
                 if (phase.outline == null)
                 {
                     phase.outline = phase.imageButton.gameObject.AddComponent<Outline>();
-                    phase.outline.effectColor = Color.yellow; // Default highlight color
-                    phase.outline.effectDistance = new Vector2(2, 2);
+                    phase.outline.effectColor = new Color(1f, 0.92f, 0.016f, 1f); // Brighter yellow
+                    phase.outline.effectDistance = new Vector2(4, 4); // Thicker outline
                     phase.outline.enabled = false;
                 }
 
@@ -58,40 +58,33 @@ public class PhaseManager : MonoBehaviour
 
     private void OnPhaseSelected(PhaseGroup selectedPhase)
     {
-        // If clicking the same phase, toggle selection
-        if (currentlySelectedPhase == selectedPhase)
+        // Toggle selection
+        selectedPhase.isSelected = !selectedPhase.isSelected;
+        selectedPhase.outline.enabled = selectedPhase.isSelected;
+
+        // Update selected phases list
+        if (selectedPhase.isSelected)
         {
-            selectedPhase.isSelected = !selectedPhase.isSelected;
-            selectedPhase.outline.enabled = selectedPhase.isSelected;
-            if (!selectedPhase.isSelected)
+            if (!selectedPhases.Contains(selectedPhase))
             {
-                currentlySelectedPhase = null;
+                selectedPhases.Add(selectedPhase);
             }
         }
         else
         {
-            // Deselect previous phase if any
-            if (currentlySelectedPhase != null)
-            {
-                currentlySelectedPhase.isSelected = false;
-                currentlySelectedPhase.outline.enabled = false;
-            }
-
-            // Select new phase
-            selectedPhase.isSelected = true;
-            selectedPhase.outline.enabled = true;
-            currentlySelectedPhase = selectedPhase;
+            selectedPhases.Remove(selectedPhase);
         }
     }
 
     private void OnSubmitClicked()
     {
-        if (currentlySelectedPhase != null)
+        if (selectedPhases.Count > 0)
         {
-            // Update the results text
+            // Update the results text to show all selected phases
             if (resultsText != null)
             {
-                resultsText.text = $"You have matched {currentlySelectedPhase.phaseName}";
+                string phasesList = string.Join(", ", selectedPhases.ConvertAll(p => p.phaseName));
+                resultsText.text = $"You have matched: {phasesList}";
             }
 
             // Show the results page
@@ -102,25 +95,24 @@ public class PhaseManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Please select a phase before submitting");
-            // You could add UI feedback here to tell the user to select a phase
+            Debug.Log("Please select at least one phase before submitting");
         }
     }
 
-    // Public method to get the currently selected phase
-    public PhaseGroup GetSelectedPhase()
+    // Public method to get all selected phases
+    public List<PhaseGroup> GetSelectedPhases()
     {
-        return currentlySelectedPhase;
+        return selectedPhases;
     }
 
-    // Public method to clear selection
+    // Public method to clear all selections
     public void ClearSelection()
     {
-        if (currentlySelectedPhase != null)
+        foreach (var phase in selectedPhases)
         {
-            currentlySelectedPhase.isSelected = false;
-            currentlySelectedPhase.outline.enabled = false;
-            currentlySelectedPhase = null;
+            phase.isSelected = false;
+            phase.outline.enabled = false;
         }
+        selectedPhases.Clear();
     }
 } 

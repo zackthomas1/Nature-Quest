@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class BirdGameUIManager : MonoBehaviour
 {
@@ -22,12 +23,17 @@ public class BirdGameUIManager : MonoBehaviour
 
     [Header("Page 3 Elements")]
     [SerializeField] private Text timerText;
+    [SerializeField] private TMP_Text countText;
     [SerializeField] private Button countButton;
     [SerializeField] private Image timerCircle;
     [SerializeField] private float gameDuration = 10f; // 10 seconds game duration FOR NOW
 
     [Header("Page 4 Elements")]
     [SerializeField] private TMP_Text result;
+    [SerializeField] private Image xBirdsCalled;
+    [SerializeField] private Image oneBirdCalled;
+    [SerializeField] private Image zeroBirdsCalled;
+
 
     private float currentTime;
     private int countBirdCall = 0;
@@ -53,16 +59,28 @@ public class BirdGameUIManager : MonoBehaviour
     // Called by the "Next" button on Page 1 to move to Page 2.
     public void OnPage1Next()
     {
-        Debug.Log("Clicked!");
+        //Debug.Log("Clicked!");
         ShowPage(2);
     }
 
     // Called by the "Play Game" button on Page 2 to move to Page 3.
     public void OnPlayGameButton()
     {
-        Debug.Log("Play Game button clicked");
+        //Debug.Log("Play Game button clicked");
         ShowPage(3);
         StartBirdGame();
+    }
+
+    private void UpdateCountText()
+    {
+        if (countBirdCall == 1)
+        {
+            countText.text = $"I heard {countBirdCall} call!";
+        }
+        else
+        {
+            countText.text = $"I heard {countBirdCall} calls!";
+        }
     }
 
     // Called by the "Count bird call" button on Page 3.
@@ -70,9 +88,21 @@ public class BirdGameUIManager : MonoBehaviour
     {
         if (gameRunning)
         {
+            countText.text = "I heard 0 calls!";
             countBirdCall++;
-            Debug.Log("Count incremented: " + countBirdCall);
+            //Debug.Log("Count incremented: " + countBirdCall);
+            UpdateCountText();
             // You could update UI count text if you want to display this in real time.
+        }
+    }
+
+    public void OnUndoCallButtonPressed()
+    {
+        if (gameRunning && countBirdCall > 0)
+        {
+            countBirdCall--;
+            //Debug.Log("Count decremented: " + countBirdCall);
+            UpdateCountText();
         }
     }
 
@@ -85,6 +115,8 @@ public class BirdGameUIManager : MonoBehaviour
     // Called by the "Back to Map" button on Page 5.
     public void OnBackToMap()
     {
+        SceneManager.LoadScene("LocationScene", LoadSceneMode.Single);
+        /*
         // Here you could simply disable the entire Bird Game UI
         // or transition back to your map view.
         gameObject.SetActive(false);
@@ -93,6 +125,7 @@ public class BirdGameUIManager : MonoBehaviour
         {
             menuManager.ResetUIState();
         }
+        */
     }
 
     public void ShowPage(int pageNumber)
@@ -170,16 +203,25 @@ public class BirdGameUIManager : MonoBehaviour
     {
 
         ShowPage(4);
+        xBirdsCalled.gameObject.SetActive(false);
+        oneBirdCalled.gameObject.SetActive(false);
+        zeroBirdsCalled.gameObject.SetActive(false);
 
         if (countBirdCall == 0)
-            result.text =
-                "0 calls? That’s good to know... I guess we shouldn’t form the choir. Thanks for your help!";
+        {
+            result.text = "0 calls? That’s good to know... I guess we shouldn’t form the choir. Thanks for your help!";
+            zeroBirdsCalled.gameObject.SetActive(true); // Show the 0 birds called image
+        }
         else if (countBirdCall == 1)
-            result.text =
-                "1 call? That’s not enough for a choir... Good to know. Thanks for your help!";
+        {
+            result.text = "1 call? That’s not enough for a choir... Good to know. Thanks for your help!";
+            oneBirdCalled.gameObject.SetActive(true); // Show the 1 bird called image
+        }
         else
-            result.text =
-                $"{countBirdCall} calls? That’s a lot! Maybe we should form the choir after all. Thanks for your help!";
+        {
+            result.text = $"{countBirdCall} calls? That’s a lot! Maybe we should form the choir after all. Thanks for your help!";
+            xBirdsCalled.gameObject.SetActive(true); // Show the X birds called image
+        }
     }
 
     public void OnCaliforniaGnatcatcher()
@@ -251,6 +293,36 @@ public class BirdGameUIManager : MonoBehaviour
 
         }
     }
+    
+    // General-purpose back buttons for each page
+    public void OnBackFromPage2()
+    {
+        ShowPage(1); // Go back to Bird Info page
+    }
 
+    public void OnBackFromPage5()
+    {
+        ShowPage(4); // Go back to Results page
+    }
+    /*
+    public void OnBackFromPage3()
+    {
+        ShowPage(2); // Go back to Instructions page
+    }
 
+    public void OnBackFromPage4()
+    {
+        ShowPage(3); // Go back to Game page
+    }
+
+    public void OnBackFromPage5()
+    {
+        ShowPage(4); // Go back to Results page
+    }
+
+    public void OnExitToMap()
+    {
+        SceneManager.LoadScene("LocationScene", LoadSceneMode.Single);
+    }
+    */
 }

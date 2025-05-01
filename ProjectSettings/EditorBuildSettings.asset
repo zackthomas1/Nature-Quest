@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WordAssociationScene.unity
     guid: 2081056977291d14491a688758c93118
+  - enabled: 1
+    path: Assets/Scenes/BirdGameScene.unity
+    guid: 7c4e35a1ae571084dba94b73ab03d8fb
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 08d6e33000550ad49b19e6bdb22d69f8, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: f870fdf339701764ba4212b7b6003291, type: 2}

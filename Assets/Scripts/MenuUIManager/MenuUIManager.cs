@@ -8,7 +8,7 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField] private GameObject ExplorePanel_InRange;
     [SerializeField] private GameObject ExplorePanel_NotInRange;
     [SerializeField] private EventManager eventManager;
-    [SerializeField] private GameObject birdGameCanvas;
+    //[SerializeField] private GameObject birdGameCanvas;
     [SerializeField] private GameObject matchGameCanvas; //make sure this works
     bool isUIPanelActive;
     int tempEvent;

@@ -1856,7 +1856,7 @@ GameObject:
   - component: {fileID: 597231534}
   - component: {fileID: 597231536}
   m_Layer: 5
-  m_Name: HorizontalPanel_01
+  m_Name: VerticalPanel_00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

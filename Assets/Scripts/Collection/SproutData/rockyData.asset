@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1849c44b605d89b418233ebe83eee1c5, type: 3}
+  m_Name: rockyData
+  m_EditorClassIdentifier: 
+  badgeImage: {fileID: 21300000, guid: c032c25b79e909246a2e33e7ec1f19fc, type: 3}
+  cardImage: {fileID: 21300000, guid: fc46f169b5d9e9444a585a20a5d16802, type: 3}
+  sName: Rocky
+  details: This sprout loves climbing tall hills and never gives up no matter what!
+  birthday: January 22nd
+  age: 5 months
+  personality: Steady
+  favoriteFood: Baked Potatoes

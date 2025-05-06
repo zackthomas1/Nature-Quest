@@ -54,7 +54,6 @@ public class MenuUIManager : MonoBehaviour
 
     public void OnVisitClick()
     {
-        //for now just testing bird
         if (currentGameIdentifier == "Bird")
         {
             ExplorePanel_InRange.SetActive(false);
@@ -62,20 +61,13 @@ public class MenuUIManager : MonoBehaviour
         }
         else if (currentGameIdentifier == "Match")
         {
-            //Debug.Log("Clicked!");
-            // Close the current ExplorePanel
             ExplorePanel_InRange.SetActive(false);
-
-            // Open the Bird Game UI.
-            if (matchGameCanvas != null)
-            {
-                //Debug.Log("Clicked!");
-                matchGameCanvas.SetActive(true);
-            }
+            SceneManager.LoadSceneAsync("BirdGameScene", LoadSceneMode.Single);
         }
-        else
+        else if (currentGameIdentifier == "Word")
         {
-            // Handle other game types (e.g., Oak game) if needed.
+            ExplorePanel_InRange.SetActive(false);
+            SceneManager.LoadSceneAsync("WordAssociationScene", LoadSceneMode.Single);
         }
     }
 

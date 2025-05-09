@@ -7,7 +7,8 @@ public class HomeMenuUIManager : MonoBehaviour
 {
     [SerializeField] private GameObject HomePanel;
     [SerializeField] private GameObject HelpPanel;
-    [SerializeField] private GameObject WarningPanel;
+    [Tooltip("The website URL to UCI Nature Preserve safety and rules page")]
+    [SerializeField] private string url;
 
 
     // Start is called before the first frame update
@@ -26,20 +27,23 @@ public class HomeMenuUIManager : MonoBehaviour
     {
         HomePanel.SetActive(true);
         HelpPanel.SetActive(false);
-        WarningPanel.SetActive(false);
     }
 
     public void ShowHelpPanel()
     {
         HomePanel.SetActive(false);
         HelpPanel.SetActive(true);
-        WarningPanel.SetActive(false);
     }
 
-    public void ShowWarningPanel()
+    public void OpenURL()
     {
-        HomePanel.SetActive(false);
-        HelpPanel.SetActive(false);
-        WarningPanel.SetActive(true);
+        if (!string.IsNullOrEmpty(url))
+        {
+            Application.OpenURL(url);
+        }
+        else
+        {
+            Debug.LogWarning("URL is empty! Please assign a valid URL in the Inspector.");
+        }
     }
 }

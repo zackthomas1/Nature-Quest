@@ -88,12 +88,6 @@ public class WordAssociationUIManager : MonoBehaviour
         Debug.Log("Show Help Panel");
     }
 
-    public void HideHelpPanel()
-    {
-        HelpPanel.SetActive(false);
-        Debug.Log("Hide Help Panel");
-    }
-
     public void LoadLocationScene()
     {
         Debug.Log("Closing mini-game. Load LocationScene");

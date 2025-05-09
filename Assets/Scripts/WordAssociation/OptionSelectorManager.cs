@@ -1,13 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class OptionSelectorManager : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] public string descriptor;
+
+    [SerializeField] private GameObject cloudImage;
+    [SerializeField] private Sprite cloud;
+    [SerializeField] private Sprite cloudCorrect;
+    [SerializeField] private Sprite cloudWrong;
+
 
     private bool isSelected;
     private float defaultMinSize; 
@@ -31,6 +36,10 @@ public class OptionSelectorManager : MonoBehaviour
 
         // Enable auto-sizing
         textComponent.enableAutoSizing = true;
+
+        // Set the default Cloud image
+        Image cloudImageComponent = cloudImage.GetComponent<Image>();
+        cloudImageComponent.sprite = cloudWrong;
 
         defaultMinSize = textComponent.fontSizeMin;
         defaultMaxSize = textComponent.fontSizeMax;

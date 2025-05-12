@@ -1,14 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class OptionSelectorManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] public string descriptor;
+    [Header("Cloud State Sprites")]
+    [SerializeField] private Sprite cloudSprite;
+    [SerializeField] private Sprite cloudCorrectSprite;
+    [SerializeField] private Sprite cloudWrongSprite;
 
+    private string descriptor;
     private bool isSelected;
     private float defaultMinSize; 
     private float defaultMaxSize;
@@ -32,6 +35,7 @@ public class OptionSelectorManager : MonoBehaviour
         // Enable auto-sizing
         textComponent.enableAutoSizing = true;
 
+        // 
         defaultMinSize = textComponent.fontSizeMin;
         defaultMaxSize = textComponent.fontSizeMax;
     }
@@ -41,37 +45,41 @@ public class OptionSelectorManager : MonoBehaviour
         isSelected = !isSelected;
         if (isSelected)
         {
-            SetSelectTextStyle();
-            wordAssociationUIManager.AddDescriptorToSelections(descriptor.ToLower());
+            bool isSelectionCorrect = wordAssociationUIManager.IsSelectedOptionCorrect(descriptor);
+            SetSelectTextStyle(isSelectionCorrect);
+            wordAssociationUIManager.UpdateSelectionsSet(descriptor.ToLower());
         }
         else
         {
             SetDeselectTextStyle();
-            wordAssociationUIManager.RemoveDescriptorToSelections(descriptor.ToLower());
+            wordAssociationUIManager.UpdateSelectionsSet(descriptor.ToLower());
         }
     }
 
-    private void SetSelectTextStyle()
+    private void SetSelectTextStyle(bool isSelectionCorrect)
     {
-        TextMeshProUGUI textComponent = transform.Find("Button/Text")?.GetComponent<TextMeshProUGUI>();
-        Debug.Assert(textComponent != null, "TextMeshProUGUI component not found on child named 'Text'.");
-        if (textComponent == null) return;
+        // Set Cloud image
+        Image cloudImageComponent = transform.Find("Button/CloudImage").GetComponent<Image>();
+        Debug.Assert(cloudImageComponent != null, "Image component not found on child named 'CloudImage'.");
+        if (cloudImageComponent == null) return;
 
-        textComponent.text = textComponent.text.ToUpper();
-        textComponent.fontStyle = FontStyles.Bold;
-        textComponent.fontSizeMin = defaultMinSize+8;
-        textComponent.fontSizeMax = defaultMaxSize+8;
+        if (isSelectionCorrect)
+        {
+            cloudImageComponent.sprite = cloudCorrectSprite;
+        }
+        else
+        {
+            cloudImageComponent.sprite = cloudWrongSprite;
+        }
     }
 
     private void SetDeselectTextStyle()
     {
-        TextMeshProUGUI textComponent = transform.Find("Button/Text")?.GetComponent<TextMeshProUGUI>();
-        Debug.Assert(textComponent != null, "TextMeshProUGUI component not found on child named 'Text'.");
-        if (textComponent == null) return;
+        // Set Cloud image
+        Image cloudImageComponent = transform.Find("Button/CloudImage").GetComponent<Image>();
+        Debug.Assert(cloudImageComponent != null, "Image component not found on child named 'CloudImage'.");
+        if (cloudImageComponent == null) return;
 
-        textComponent.text = textComponent.text.ToLower();
-        textComponent.fontStyle = FontStyles.Normal;
-        textComponent.fontSizeMin = defaultMinSize;
-        textComponent.fontSizeMax = defaultMaxSize;
+        cloudImageComponent.sprite = cloudSprite;
     }
 }

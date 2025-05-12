@@ -21,6 +21,8 @@ public class WordAssociationUIManager : MonoBehaviour
     [SerializeField] private OptionsData options;
     [SerializeField] private GameObject optionSelectorPrefab;
 
+    [SerializeField] private GameObject summaryText;
+
     private List<string> selections = new List<string>();
 
     // Start is called before the first frame update
@@ -57,6 +59,7 @@ public class WordAssociationUIManager : MonoBehaviour
         SummaryPanel.SetActive(true);
         HelpPanel.SetActive(false);
 
+        // method to convert list of species traits to string
         string FormatList(List<string> items)
         {
             List<string> boldItems = items.Select(item => $"<b>{item}</b>").ToList();
@@ -66,20 +69,13 @@ public class WordAssociationUIManager : MonoBehaviour
             return $"{string.Join(", ", allButLast)}, and {last}";
         }
 
-        TextMeshProUGUI textComponent = transform.Find("SummaryPanel/VerticalPanel/BodyPanel/ContentPanel/TextPanel/Text")?.GetComponent<TextMeshProUGUI>();
-        Debug.Assert(textComponent != null, "TextMeshProUGUI component not found on child named 'Text'.");
+        // Generate text component content
+        TextMeshProUGUI textComponent = summaryText.GetComponent<TextMeshProUGUI>();
+        Debug.Assert(textComponent != null, $"TextMeshProUGUI component not found on child named '{summaryText.GetHierarchyPath()}'.");
         if (textComponent == null) return;
 
         string traits = FormatList(currentSpecies.traits);
-
-        if (IsSelectionCorrect())
-        {
-            textComponent.text = $"That’s right!!! {currentSpecies.commonName} has a {traits} texture.";
-        }
-        else
-        {
-            textComponent.text = $"Sorry, that is not correct. {currentSpecies.commonName} has a {traits} texture.";
-        }
+        textComponent.text = $"You got it! the {currentSpecies.commonName} leaves are {traits}. Now the sprouts can finish their sign.";
     }
 
     public void ShowHelpPanel()
@@ -88,39 +84,37 @@ public class WordAssociationUIManager : MonoBehaviour
         Debug.Log("Show Help Panel");
     }
 
-    public void HideHelpPanel()
-    {
-        HelpPanel.SetActive(false);
-        Debug.Log("Hide Help Panel");
-    }
-
     public void LoadLocationScene()
     {
         Debug.Log("Closing mini-game. Load LocationScene");
         SceneManager.LoadScene("LocationScene");
     }
 
-    public void AddDescriptorToSelections(string descriptor)
+    public void UpdateSelectionsSet(string descriptor)
     {
         if (!selections.Contains(descriptor))
         {
             selections.Add(descriptor);
         }
-        Debug.Log("[" + String.Join(", ", selections) + "]");
-    }
-
-    public void RemoveDescriptorToSelections(string descriptor)
-    {
-        if (selections.Contains(descriptor))
+        else
         {
             selections.Remove(descriptor);
         }
+
         Debug.Log("[" + String.Join(", ", selections) + "]");
+
+        bool IsSelectionsSetCorrect = new HashSet<string>(currentSpecies.traits).SetEquals(new HashSet<string>(selections));
+        if (IsSelectionsSetCorrect)
+        {
+            Debug.Log("Selections set correct");
+            ShowSummaryPanel();
+        }
+
     }
 
-    private bool IsSelectionCorrect()
+    public bool IsSelectedOptionCorrect(string selectedOption)
     {
-        return new HashSet<string>(selections).SetEquals(currentSpecies.traits);
+        return currentSpecies.traits.Contains(selectedOption);
     }
 
     private void SpawnOptionSelectors()

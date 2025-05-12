@@ -486,81 +486,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 44081325}
   m_CullTransparentMesh: 1
---- !u!1 &144990589
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 144990590}
-  - component: {fileID: 144990592}
-  - component: {fileID: 144990591}
-  m_Layer: 5
-  m_Name: ContentPanel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &144990590
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144990589}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 450668700}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -30}
-  m_SizeDelta: {x: -232, y: -100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &144990591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144990589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &144990592
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144990589}
-  m_CullTransparentMesh: 1
 --- !u!1 &148748646
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,7 +827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &287559386
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1067,14 +992,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 144990590}
+  m_Children: []
   m_Father: {fileID: 1006325475}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 337.5, y: -629.9529}
-  m_SizeDelta: {x: 675, y: 660.4641}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &450668701
 MonoBehaviour:
@@ -1145,9 +1069,9 @@ GameObject:
   - component: {fileID: 569910863}
   - component: {fileID: 569910866}
   - component: {fileID: 569910865}
-  - component: {fileID: 569910864}
+  - component: {fileID: 569910867}
   m_Layer: 5
-  m_Name: HorizontalPanel_01
+  m_Name: TextPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1168,37 +1092,11 @@ RectTransform:
   - {fileID: 1800793378}
   m_Father: {fileID: 1006325475}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 337.5, y: -133.8604}
-  m_SizeDelta: {x: 675, y: 267.7208}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &569910864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 569910862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 1
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!114 &569910865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1237,6 +1135,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569910862}
   m_CullTransparentMesh: 1
+--- !u!114 &569910867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569910862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: 400
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &602233225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,7 +1563,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 834046524}
         m_TargetAssemblyTypeName: WordAssociationUIManager, Assembly-CSharp
-        m_MethodName: ShowMiniGamePanel
+        m_MethodName: LoadLocationScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1922,6 +1840,7 @@ MonoBehaviour:
   currentSpecies: {fileID: 11400000, guid: 8a55bd6e5ef8eb84f9ac89a083addfda, type: 2}
   options: {fileID: 11400000, guid: fb864e3b698b77d418133d512b2964a4, type: 2}
   optionSelectorPrefab: {fileID: 6804360978152948762, guid: 2b24cc47651105c43b8fae99cc7869f7, type: 3}
+  summaryText: {fileID: 1800793377}
 --- !u!1 &843012850
 GameObject:
   m_ObjectHideFlags: 0
@@ -3099,7 +3018,7 @@ GameObject:
   - component: {fileID: 1289439419}
   - component: {fileID: 1289439418}
   m_Layer: 5
-  m_Name: ButtonPanel (1)
+  m_Name: ButtonPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3120,10 +3039,10 @@ RectTransform:
   - {fileID: 742012794}
   m_Father: {fileID: 1006325475}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 337.5, y: -1063.0425}
-  m_SizeDelta: {x: 675, y: 141.71501}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1289439418
 MonoBehaviour:
@@ -4560,7 +4479,7 @@ GameObject:
   - component: {fileID: 1800793380}
   - component: {fileID: 1800793379}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: 'HeaderText '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4580,10 +4499,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 569910863}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 337.5, y: -133.8604}
-  m_SizeDelta: {x: 675, y: 267.7208}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1800793379
 MonoBehaviour:
@@ -4625,8 +4544,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You got it! the Black Sage leaves are leathery and rough. Now the sprouts
-    can finish their sign.
+  m_text: You got it! the _______ leaves are _____ and _____. Now the sprouts can
+    finish their sign.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 36612786333f889429f3da2a5a896c36, type: 2}
   m_sharedMaterial: {fileID: 9019562154871845930, guid: 36612786333f889429f3da2a5a896c36, type: 2}
@@ -4653,7 +4572,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50.5
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

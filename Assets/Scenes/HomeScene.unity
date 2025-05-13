@@ -1065,7 +1065,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 71.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1289,7 +1289,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70.1
+  m_fontSize: 66.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2316,7 +2316,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 514669e185d07354ca3cdcf66a05f066, type: 2}
     - target: {fileID: 976438997908122144, guid: d4ba5f8eddf1a3443a08400c59b9f72c, type: 3}
       propertyPath: unlockedSprouts.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 976438997908122144, guid: d4ba5f8eddf1a3443a08400c59b9f72c, type: 3}
       propertyPath: unlockedSprouts.Array.data[0]
@@ -2325,7 +2325,7 @@ PrefabInstance:
     - target: {fileID: 976438997908122144, guid: d4ba5f8eddf1a3443a08400c59b9f72c, type: 3}
       propertyPath: unlockedSprouts.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 32d81d41c20b0c643b5c0c862b6c5036, type: 2}
+      objectReference: {fileID: 11400000, guid: 68717773d6e512b448d4e90986ad0c63, type: 2}
     - target: {fileID: 976438997908122144, guid: d4ba5f8eddf1a3443a08400c59b9f72c, type: 3}
       propertyPath: unlockedSprouts.Array.data[2]
       value: 

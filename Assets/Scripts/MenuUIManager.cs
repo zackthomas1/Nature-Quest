@@ -5,11 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MenuUIManager : MonoBehaviour
 {
+    [Header("UI Panels")]
     [SerializeField] private GameObject ExplorePanel_InRange;
     [SerializeField] private GameObject ExplorePanel_NotInRange;
+    [SerializeField] private GameObject PrizePanel;
+    [SerializeField] private GameObject CardPanel;
+
+
+    [Header("Event Manager")]
     [SerializeField] private EventManager eventManager;
-    //[SerializeField] private GameObject birdGameCanvas;
-    [SerializeField] private GameObject matchGameCanvas; //make sure this works
+
     bool isUIPanelActive;
     int tempEvent;
     private string currentGameIdentifier; // This will store "Bird" or "Oak" etc.
@@ -17,7 +22,12 @@ public class MenuUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // check if a sprout has been unlocked
+        if (GameManager.Instance.isPrizePanelActive)
+        {
+            DisplayPrizePanel();
+            CardPanel.GetComponent<CardManager>().SetCardContent(GameManager.Instance.prizeSprout);
+        }
     }
 
     // Update is called once per frame
@@ -52,6 +62,11 @@ public class MenuUIManager : MonoBehaviour
         }
     }
 
+    public void DisplayPrizePanel()
+    {
+        PrizePanel.SetActive(true);
+    }
+
     public void OnVisitClick()
     {
         if (currentGameIdentifier == "Bird")
@@ -76,6 +91,12 @@ public class MenuUIManager : MonoBehaviour
         ExplorePanel_InRange.SetActive(false);
         ExplorePanel_NotInRange.SetActive(false);
         isUIPanelActive = false;
+    }
+
+    public void ClosePrizePanel()
+    {
+        PrizePanel.SetActive(false);
+        GameManager.Instance.isPrizePanelActive = false;
     }
 
     public void ResetUIState()

@@ -35,6 +35,9 @@ public class BirdGameUIManager : MonoBehaviour
     [SerializeField] private Image zeroBirdsCalled;
 
 
+    [SerializeField] private SproutData prizeSprout;
+
+
     private float currentTime;
     private int countBirdCall = 0;
     private bool gameRunning = false;
@@ -115,7 +118,16 @@ public class BirdGameUIManager : MonoBehaviour
     // Called by the "Back to Map" button on Page 5.
     public void OnBackToMap()
     {
+        // Check if prize sprout should be unlocked
+        if (!GameManager.Instance.isSproutPreviouslyUnlocked(prizeSprout))
+        {
+            GameManager.Instance.UnlockSprout(prizeSprout);
+            Debug.Log("Prize sprout unlocked");
+        }
+
+        Debug.Log("Closing mini-game. Load LocationScene");
         SceneManager.LoadScene("LocationScene", LoadSceneMode.Single);
+
         /*
         // Here you could simply disable the entire Bird Game UI
         // or transition back to your map view.

@@ -12,6 +12,12 @@ public class GameManager : MonoBehaviour
     [Header("Unlocked Sprouts")]
     public  List<SproutData> unlockedSprouts = new List<SproutData>();
 
+    // Hidden public variables
+    [HideInInspector] 
+    public bool isPrizePanelActive = false;
+    [HideInInspector]
+    public SproutData prizeSprout; 
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -31,9 +37,12 @@ public class GameManager : MonoBehaviour
             unlockedSprouts.Add(data);
             Debug.Log($"Unlocked new sprout: {data.sName}");
         }
+
+        isPrizePanelActive = true;
+        prizeSprout = data; 
     }
 
-    public bool isSproutUnlocked(SproutData data) 
+    public bool isSproutPreviouslyUnlocked(SproutData data) 
     { 
         return unlockedSprouts.Contains(data);
     }

@@ -15,14 +15,15 @@ public class WordAssociationUIManager : MonoBehaviour
     [SerializeField] private GameObject SummaryPanel;
     [SerializeField] private GameObject HelpPanel;
 
-
-    [Header("Game Data")]
-    [SerializeField] private SpeciesData currentSpecies;
-    [SerializeField] private OptionsData options;
+    [Header("Scene Components")]
+    [SerializeField] private GameObject summaryText;
     [SerializeField] private GameObject optionSelectorPrefab;
 
-    [SerializeField] private GameObject summaryText;
-
+    [Header("Game Data")]
+    [SerializeField] private SpeciesData species;
+    [SerializeField] private OptionsData options;
+    [SerializeField] private SproutData prizeSprout;
+    
     private List<string> selections = new List<string>();
 
     // Start is called before the first frame update
@@ -74,8 +75,8 @@ public class WordAssociationUIManager : MonoBehaviour
         Debug.Assert(textComponent != null, $"TextMeshProUGUI component not found on child named '{summaryText.GetHierarchyPath()}'.");
         if (textComponent == null) return;
 
-        string traits = FormatList(currentSpecies.traits);
-        textComponent.text = $"You got it! the {currentSpecies.commonName} leaves are {traits}. Now the sprouts can finish their sign.";
+        string traits = FormatList(species.traits);
+        textComponent.text = $"You got it! the {species.commonName} leaves are {traits}. Now the sprouts can finish their sign.";
 
         // Get Body transform container
         Transform container = transform.Find("SummaryPanel/VerticalPanel/BodyPanel/VerticalPanel");
@@ -83,10 +84,10 @@ public class WordAssociationUIManager : MonoBehaviour
         if (container == null) return;
 
         // Instantiate and initialize the OptionSelector
-        for (int i = 0; i < currentSpecies.traits.Count; i++)
+        for (int i = 0; i < species.traits.Count; i++)
         {
             GameObject instance = Instantiate(optionSelectorPrefab, container.transform, false);
-            instance.GetComponent<OptionSelectorManager>().Initialize(currentSpecies.traits[i], this);
+            instance.GetComponent<OptionSelectorManager>().Initialize(species.traits[i], this);
         }
     }
 
@@ -96,8 +97,15 @@ public class WordAssociationUIManager : MonoBehaviour
         Debug.Log("Show Help Panel");
     }
 
-    public void LoadLocationScene()
+    public void EndGame()
     {
+        // Check if prize sprout should be unlocked
+        if (!GameManager.Instance.isSproutPreviouslyUnlocked(prizeSprout))
+        {
+            GameManager.Instance.UnlockSprout(prizeSprout);
+            Debug.Log("Prize sprout unlocked");
+        }
+
         Debug.Log("Closing mini-game. Load LocationScene");
         SceneManager.LoadScene("LocationScene");
     }
@@ -117,7 +125,7 @@ public class WordAssociationUIManager : MonoBehaviour
 
 
         // Check if user has selected all the correct traits
-        bool IsSelectionsSetCorrect = new HashSet<string>(currentSpecies.traits).SetEquals(new HashSet<string>(selections));
+        bool IsSelectionsSetCorrect = new HashSet<string>(species.traits).SetEquals(new HashSet<string>(selections));
         if (IsSelectionsSetCorrect)
         {
             Debug.Log("Selections set correct");
@@ -128,7 +136,7 @@ public class WordAssociationUIManager : MonoBehaviour
 
     public bool IsSelectedOptionCorrect(string selectedOption)
     {
-        return currentSpecies.traits.Contains(selectedOption);
+        return species.traits.Contains(selectedOption);
     }
 
     private void SpawnOptionSelectors()

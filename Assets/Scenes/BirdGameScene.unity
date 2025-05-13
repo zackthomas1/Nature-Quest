@@ -1453,7 +1453,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &309329541
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3043,7 +3043,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 514580551}
         m_TargetAssemblyTypeName: BirdGameUIManager, Assembly-CSharp
-        m_MethodName: OnPage4Next
+        m_MethodName: OnBackToMap
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3379,6 +3379,7 @@ MonoBehaviour:
   xBirdsCalled: {fileID: 855748315}
   oneBirdCalled: {fileID: 2066764754}
   zeroBirdsCalled: {fileID: 704490259}
+  prizeSprout: {fileID: 11400000, guid: d215c8375c87cf54aa03db5ed18d7120, type: 2}
 --- !u!1 &546244464
 GameObject:
   m_ObjectHideFlags: 0
@@ -10905,7 +10906,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1560806282
 RectTransform:
   m_ObjectHideFlags: 0

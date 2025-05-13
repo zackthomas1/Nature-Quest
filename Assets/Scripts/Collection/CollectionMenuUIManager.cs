@@ -15,10 +15,9 @@ public class CollectionUIManager : MonoBehaviour
     [SerializeField] private GameObject sproutBadgePrefab;
 
     [Header("Trading Card")]
-    [SerializeField] private GameObject namePlateText;
-    [SerializeField] private GameObject sproutImage;
-    [SerializeField] private GameObject statsText;
+    [SerializeField] private GameObject tradingCardPrefab;
 
+    // private
     private List<GameObject> badgeList = new List<GameObject>();
     private int badgeListSize = 12;
     private bool isGameManagerValid;
@@ -93,15 +92,6 @@ public class CollectionUIManager : MonoBehaviour
         CollectionPanel.SetActive(false);
         TradingCardPanel.SetActive(true);
 
-        TextMeshProUGUI namePlateTextComponent = namePlateText.GetComponent<TextMeshProUGUI>();
-        namePlateTextComponent.text = $"{data.sName}";
-
-        Image sproutImageComponent = sproutImage.GetComponent<Image>();
-        sproutImageComponent.sprite = data.cardImage;
-
-        TextMeshProUGUI statsTextComponent = statsText.GetComponent<TextMeshProUGUI>();
-        statsTextComponent.text = $"{data.details}\nBirthday - {data.birthday}\nAge - {data.age}\nPersonality - {data.personality}\nFavorite Food - {data.favoriteFood}";
-
-
+        tradingCardPrefab.GetComponent<CardManager>().SetCardContent(data);
     }
 }

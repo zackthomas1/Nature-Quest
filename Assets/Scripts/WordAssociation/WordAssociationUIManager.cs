@@ -97,7 +97,7 @@ public class WordAssociationUIManager : MonoBehaviour
         Debug.Log("Show Help Panel");
     }
 
-    public void EndGame()
+    public void UnlockPrize()
     {
         // Check if prize sprout should be unlocked
         if (!GameManager.Instance.isSproutPreviouslyUnlocked(prizeSprout))
@@ -105,7 +105,10 @@ public class WordAssociationUIManager : MonoBehaviour
             GameManager.Instance.UnlockSprout(prizeSprout);
             Debug.Log("Prize sprout unlocked");
         }
+    }
 
+    public void LoadLocationScene()
+    {
         Debug.Log("Closing mini-game. Load LocationScene");
         SceneManager.LoadScene("LocationScene");
     }
@@ -123,7 +126,6 @@ public class WordAssociationUIManager : MonoBehaviour
 
         Debug.Log("[" + String.Join(", ", selections) + "]");
 
-
         // Check if user has selected all the correct traits
         bool IsSelectionsSetCorrect = new HashSet<string>(species.traits).SetEquals(new HashSet<string>(selections));
         if (IsSelectionsSetCorrect)
@@ -131,7 +133,6 @@ public class WordAssociationUIManager : MonoBehaviour
             Debug.Log("Selections set correct");
             ShowSummaryPanel();
         }
-
     }
 
     public bool IsSelectedOptionCorrect(string selectedOption)
@@ -179,7 +180,6 @@ public class WordAssociationUIManager : MonoBehaviour
                 layout.padding = new RectOffset(0, sidePadding, 5, 5);
             }
 
-
             if (!leftSide)
             {
                 AddFlexibleFiller(currentRow.transform);
@@ -195,7 +195,6 @@ public class WordAssociationUIManager : MonoBehaviour
             }
         }
     }
-
 
     private void AddFlexibleFiller(Transform parent)
     {

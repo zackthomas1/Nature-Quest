@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MatchingGameUIManager : MonoBehaviour
 {
@@ -21,6 +22,12 @@ public class MatchingGameUIManager : MonoBehaviour
     {
         // Show page 1 and hide others at start.
         ShowPage(1);
+    }
+
+     public void LoadLocationScene()
+    {
+        Debug.Log("Closing mini-game. Load LocationScene");
+        SceneManager.LoadScene("LocationScene");
     }
 
     public void OnInstructionsButton()

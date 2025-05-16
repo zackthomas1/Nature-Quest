@@ -12,14 +12,18 @@ public class PhaseManager : MonoBehaviour
         public Image imageButton;
         public Outline outline;
         public bool isSelected;
-        public string phaseName; // Add this to store the phase name
+        public string phaseName;
+        public string phaseDescription;
+        public RawImage phaseImageDisplay;
+        public Sprite phaseSprite;
     }
 
     [SerializeField] private List<PhaseGroup> phaseGroups = new List<PhaseGroup>();
-    [SerializeField] private Button submitButton; // Reference to the submit button
-    [SerializeField] private TextMeshProUGUI resultsText; // Changed to TextMeshProUGUI
-    [SerializeField] private GameObject resultsPage; // Reference to the results page
-    private List<PhaseGroup> selectedPhases = new List<PhaseGroup>(); // Changed to track multiple selections
+    [SerializeField] private Button submitButton;
+    [SerializeField] private TextMeshProUGUI resultsText;
+    [SerializeField] private GameObject resultsPage;
+    [SerializeField] private PhaseModalManager modalManager;
+    private List<PhaseGroup> selectedPhases = new List<PhaseGroup>();
 
     private void Start()
     {
@@ -39,8 +43,8 @@ public class PhaseManager : MonoBehaviour
                 if (phase.outline == null)
                 {
                     phase.outline = phase.imageButton.gameObject.AddComponent<Outline>();
-                    phase.outline.effectColor = new Color(1f, 0.92f, 0.016f, 1f); // Brighter yellow
-                    phase.outline.effectDistance = new Vector2(4, 4); // Thicker outline
+                    phase.outline.effectColor = new Color(1f, 0.92f, 0.016f, 1f);
+                    phase.outline.effectDistance = new Vector2(4, 4);
                     phase.outline.enabled = false;
                 }
 
@@ -58,6 +62,12 @@ public class PhaseManager : MonoBehaviour
 
     private void OnPhaseSelected(PhaseGroup selectedPhase)
     {
+        // Show the modal with phase information
+        if (modalManager != null)
+        {
+            modalManager.ShowPhaseModal(selectedPhase.phaseName, selectedPhase.phaseDescription, selectedPhase.phaseImageDisplay, selectedPhase.phaseSprite);
+        }
+
         // Toggle selection
         selectedPhase.isSelected = !selectedPhase.isSelected;
         selectedPhase.outline.enabled = selectedPhase.isSelected;

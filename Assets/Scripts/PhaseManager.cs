@@ -10,20 +10,29 @@ public class PhaseManager : MonoBehaviour
     {
         public GameObject groupObject;
         public Image imageButton;
-        public Outline outline;
-        public bool isSelected;
         public string phaseName;
-        public string phaseDescription;
-        public RawImage phaseImageDisplay;
-        public Sprite phaseSprite;
+        public bool isSelected;
+        private Outline outline;
+
+        public void SetOutline(Outline newOutline)
+        {
+            outline = newOutline;
+        }
+
+        public void EnableOutline(bool enable)
+        {
+            if (outline != null)
+            {
+                outline.enabled = enable;
+            }
+        }
     }
 
     [SerializeField] private List<PhaseGroup> phaseGroups = new List<PhaseGroup>();
     [SerializeField] private Button submitButton;
     [SerializeField] private TextMeshProUGUI resultsText;
     [SerializeField] private GameObject resultsPage;
-    [SerializeField] private PhaseModalManager modalManager;
-    private List<PhaseGroup> selectedPhases = new List<PhaseGroup>();
+    private PhaseGroup selectedPhase;
 
     private void Start()
     {
@@ -39,14 +48,12 @@ public class PhaseManager : MonoBehaviour
                     button = phase.imageButton.gameObject.AddComponent<Button>();
                 }
 
-                // Add outline component if not present
-                if (phase.outline == null)
-                {
-                    phase.outline = phase.imageButton.gameObject.AddComponent<Outline>();
-                    phase.outline.effectColor = new Color(1f, 0.92f, 0.016f, 1f);
-                    phase.outline.effectDistance = new Vector2(4, 4);
-                    phase.outline.enabled = false;
-                }
+                // Add outline component
+                Outline outline = phase.imageButton.gameObject.AddComponent<Outline>();
+                outline.effectColor = Color.blue;
+                outline.effectDistance = new Vector2(6, 6);
+                outline.enabled = false;
+                phase.SetOutline(outline);
 
                 // Add click listener
                 button.onClick.AddListener(() => OnPhaseSelected(phase));
@@ -60,41 +67,29 @@ public class PhaseManager : MonoBehaviour
         }
     }
 
-    private void OnPhaseSelected(PhaseGroup selectedPhase)
+    private void OnPhaseSelected(PhaseGroup phase)
     {
-        // Show the modal with phase information
-        if (modalManager != null)
+        // Deselect previous phase if any
+        if (selectedPhase != null)
         {
-            modalManager.ShowPhaseModal(selectedPhase.phaseName, selectedPhase.phaseDescription, selectedPhase.phaseImageDisplay, selectedPhase.phaseSprite);
+            selectedPhase.isSelected = false;
+            selectedPhase.EnableOutline(false);
         }
 
-        // Toggle selection
-        selectedPhase.isSelected = !selectedPhase.isSelected;
-        selectedPhase.outline.enabled = selectedPhase.isSelected;
-
-        // Update selected phases list
-        if (selectedPhase.isSelected)
-        {
-            if (!selectedPhases.Contains(selectedPhase))
-            {
-                selectedPhases.Add(selectedPhase);
-            }
-        }
-        else
-        {
-            selectedPhases.Remove(selectedPhase);
-        }
+        // Select new phase
+        phase.isSelected = true;
+        phase.EnableOutline(true);
+        selectedPhase = phase;
     }
 
     private void OnSubmitClicked()
     {
-        if (selectedPhases.Count > 0)
+        if (selectedPhase != null)
         {
-            // Update the results text to show all selected phases
+            // Update the results text with the fixed format
             if (resultsText != null)
             {
-                string phasesList = string.Join(", ", selectedPhases.ConvertAll(p => p.phaseName));
-                resultsText.text = $"You have matched: {phasesList}";
+                resultsText.text = $"It's in the {selectedPhase.phaseName} Phase? That's good to know! The sprouts will add California Sunflower to their guest list. Thanks for your help!";
             }
 
             // Show the results page
@@ -105,24 +100,17 @@ public class PhaseManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Please select at least one phase before submitting");
+            Debug.Log("Please select a phase before submitting");
         }
     }
 
-    // Public method to get all selected phases
-    public List<PhaseGroup> GetSelectedPhases()
-    {
-        return selectedPhases;
-    }
-
-    // Public method to clear all selections
     public void ClearSelection()
     {
-        foreach (var phase in selectedPhases)
+        if (selectedPhase != null)
         {
-            phase.isSelected = false;
-            phase.outline.enabled = false;
+            selectedPhase.isSelected = false;
+            selectedPhase.EnableOutline(false);
+            selectedPhase = null;
         }
-        selectedPhases.Clear();
     }
 } 

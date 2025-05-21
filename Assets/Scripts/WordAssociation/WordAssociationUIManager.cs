@@ -99,8 +99,10 @@ public class WordAssociationUIManager : MonoBehaviour
 
     public void UnlockPrize()
     {
+        Debug.Assert(GameManager.Instance, "GameManager instance null");
+
         // Check if prize sprout should be unlocked
-        if (!GameManager.Instance.isSproutPreviouslyUnlocked(prizeSprout))
+        if (GameManager.Instance && !GameManager.Instance.isSproutPreviouslyUnlocked(prizeSprout))
         {
             GameManager.Instance.UnlockSprout(prizeSprout);
             Debug.Log("Prize sprout unlocked");

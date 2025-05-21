@@ -474,8 +474,8 @@ MonoBehaviour:
   cloudSprite: {fileID: 21300000, guid: dce1ab95cc618414cb496f02950c6811, type: 3}
   cloudCorrectSprite: {fileID: 21300000, guid: ca99c2240faba6746a9b66b30984aa5b, type: 3}
   cloudWrongSprite: {fileID: 21300000, guid: 2e727fe346f6ff646b08401eb1d59e73, type: 3}
-  GreenCheckSprite: {fileID: 21300000, guid: 096d514cf2beb8447bff04d40224fb6f, type: 3}
-  RedXSprite: {fileID: 21300000, guid: 5bad92d7f57423547850e386b3505d2a, type: 3}
+  GreenCheckSprite: {fileID: 21300000, guid: c844e5b46eaa150428f63a18cee0d89c, type: 3}
+  RedXSprite: {fileID: 21300000, guid: db4a4f304973aa342b41936dcd02a6c6, type: 3}
 --- !u!1 &8240139272155265028
 GameObject:
   m_ObjectHideFlags: 0

@@ -2433,10 +2433,10 @@ MonoBehaviour:
       - m_Target: {fileID: 514580551}
         m_TargetAssemblyTypeName: BirdGameUIManager, Assembly-CSharp
         m_MethodName: UnlockPrize
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 32d81d41c20b0c643b5c0c862b6c5036, type: 2}
+          m_ObjectArgumentAssemblyTypeName: SproutData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2756,7 +2756,6 @@ MonoBehaviour:
   xBirdsCalled: {fileID: 855748315}
   oneBirdCalled: {fileID: 2066764754}
   zeroBirdsCalled: {fileID: 704490259}
-  prizeSprout: {fileID: 11400000, guid: d215c8375c87cf54aa03db5ed18d7120, type: 2}
 --- !u!1 &546244464
 GameObject:
   m_ObjectHideFlags: 0

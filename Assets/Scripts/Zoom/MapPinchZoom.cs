@@ -4,7 +4,7 @@ using UnityEngine;
 using Mapbox.Unity.Map;
 using Unity.VisualScripting;
 
-public class Pinch : MonoBehaviour
+public class MapPinchZoom : MonoBehaviour
 {
 
     [Header("Map Reference")]
@@ -21,18 +21,17 @@ public class Pinch : MonoBehaviour
     [Tooltip("Maximum map zoom level")]
     [SerializeField] private float maxZoom = 20f;
 
+    [Header("Pinch Lock Panel")]
+    [SerializeField] private GameObject disalePinchPanel;
 
     // Update is called once per frame
     void Update()
     {
-#if UNITY_EDITOR
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        if (Mathf.Abs(scroll) > 0.01f)
+        if(disalePinchPanel && disalePinchPanel.activeInHierarchy)
         {
-            float z = Mathf.Clamp(map.Zoom + scroll * (zoomSpeed * 10), minZoom, maxZoom);
-            map.UpdateMap(map.CenterLatitudeLongitude, z);
+            return;
         }
-#else
+
         if(Input.touchCount == 2)
         {
             Touch t0 = Input.GetTouch(0);
@@ -55,7 +54,5 @@ public class Pinch : MonoBehaviour
             // Apply it 
             map.UpdateMap(map.CenterLatitudeLongitude, newZoom);
         }
-#endif
-
     }
 }

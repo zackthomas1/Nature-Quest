@@ -25,9 +25,6 @@ public class BirdGameUIManager : MonoBehaviour
     [SerializeField] private Image oneBirdCalled;
     [SerializeField] private Image zeroBirdsCalled;
 
-
-    [SerializeField] private SproutData prizeSprout;
-
     private GameObject currentActiveModal = null;
     private float currentTime;
     private int countBirdCall = 0;
@@ -63,7 +60,7 @@ public class BirdGameUIManager : MonoBehaviour
         }
     }
 
-    public void UnlockPrize()
+    public void UnlockPrize(SproutData prizeSprout)
     {
         Debug.Assert(GameManager.Instance, "GameManager instance null");
 

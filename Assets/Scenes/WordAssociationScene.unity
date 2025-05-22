@@ -1463,10 +1463,10 @@ MonoBehaviour:
       - m_Target: {fileID: 834046524}
         m_TargetAssemblyTypeName: WordAssociationUIManager, Assembly-CSharp
         m_MethodName: UnlockPrize
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 514669e185d07354ca3cdcf66a05f066, type: 2}
+          m_ObjectArgumentAssemblyTypeName: SproutData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1497,7 +1497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8862745, g: 0.8862745, b: 0.8862745, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1752,7 +1752,6 @@ MonoBehaviour:
   optionSelectorPrefab: {fileID: 6804360978152948762, guid: 2b24cc47651105c43b8fae99cc7869f7, type: 3}
   species: {fileID: 11400000, guid: 8a55bd6e5ef8eb84f9ac89a083addfda, type: 2}
   options: {fileID: 11400000, guid: fb864e3b698b77d418133d512b2964a4, type: 2}
-  prizeSprout: {fileID: 11400000, guid: b8f3536cb7a923b4ebd12d2d54bb9e44, type: 2}
 --- !u!1 &843012850
 GameObject:
   m_ObjectHideFlags: 0

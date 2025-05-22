@@ -22,7 +22,6 @@ public class WordAssociationUIManager : MonoBehaviour
     [Header("Game Data")]
     [SerializeField] private SpeciesData species;
     [SerializeField] private OptionsData options;
-    [SerializeField] private SproutData prizeSprout;
     
     private List<string> selections = new List<string>();
 
@@ -97,7 +96,7 @@ public class WordAssociationUIManager : MonoBehaviour
         Debug.Log("Show Help Panel");
     }
 
-    public void UnlockPrize()
+    public void UnlockPrize(SproutData prizeSprout)
     {
         Debug.Assert(GameManager.Instance, "GameManager instance null");
 

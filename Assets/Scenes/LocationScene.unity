@@ -3871,7 +3871,6 @@ MonoBehaviour:
   ExplorePanel_NotInRange: {fileID: 2072127699}
   PrizePanel: {fileID: 878683286}
   CardPanel: {fileID: 932783507}
-  eventManager: {fileID: 1493006603}
 --- !u!114 &1220223454
 MonoBehaviour:
   m_ObjectHideFlags: 0

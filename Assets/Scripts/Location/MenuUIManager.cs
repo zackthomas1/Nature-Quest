@@ -12,9 +12,6 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField] private GameObject PrizePanel;
     [SerializeField] private GameObject CardPanel;
 
-    [Header("Event Manager")]
-    [SerializeField] private EventManager eventManager;
-
     bool isUIPanelActive;
     int tempEvent;
     private string currentGameIdentifier; // This will store "Bird" or "Oak" etc.
@@ -33,11 +30,6 @@ public class MenuUIManager : MonoBehaviour
             DisplayPrizePanel();
             CardPanel.GetComponent<CardManager>().SetCardContent(GameManager.Instance.prizeSprout);
         }
-    }
-
-    public void OnJoinClick()
-    {
-        eventManager.ActivateEvent(tempEvent);
     }
 
     public void DisplayInRangePanel(int eventID, string gameID)

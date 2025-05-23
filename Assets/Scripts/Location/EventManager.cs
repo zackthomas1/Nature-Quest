@@ -10,18 +10,4 @@ public class EventManager : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void ActivateEvent(int eventID)
-    {
-        if(eventID == 1)
-        {
-            SceneManager.LoadScene("WordAssociationScene");
-        }
-    }
 }

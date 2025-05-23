@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mapbox.Utils;
 using Mapbox.Examples;
+using UnityEditor;
 
 
 public class OakTreePointer : MonoBehaviour
@@ -17,7 +18,7 @@ public class OakTreePointer : MonoBehaviour
     public Vector2d eventPos;
     public int eventID;
 
-    [SerializeField] private string gameIdentifier;
+    [SerializeField] private SceneAsset gameIdentifier;
 
     private MenuUIManager menuUIManager;
     private EventManager eventManager;
@@ -57,7 +58,7 @@ public class OakTreePointer : MonoBehaviour
         {
             // Here you have both eventID and gameIdentifier available to choose how to proceed:
             // For example, you can pass both to the UI manager.
-            menuUIManager.DisplayInRangePanel(eventID, gameIdentifier);
+            menuUIManager.DisplayInRangePanel(gameIdentifier.name);
         }
         else
         {

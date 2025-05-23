@@ -13,8 +13,7 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField] private GameObject CardPanel;
 
     bool isUIPanelActive;
-    int tempEvent;
-    private string currentGameIdentifier; // This will store "Bird" or "Oak" etc.
+    private string currentGameIdentifier; // Stores the mini-game scene name.
 
     // Start is called before the first frame update
     void Start()
@@ -32,11 +31,10 @@ public class MenuUIManager : MonoBehaviour
         }
     }
 
-    public void DisplayInRangePanel(int eventID, string gameID)
+    public void DisplayInRangePanel(string gameID)
     {
         if (!isUIPanelActive)
         {
-            tempEvent = eventID;
             currentGameIdentifier = gameID;  // Save the game identifier
             OverlayBackgroundPanel.SetActive(true);
             ExplorePanel_InRange.SetActive(true);
@@ -61,21 +59,8 @@ public class MenuUIManager : MonoBehaviour
 
     public void OnVisitClick()
     {
-        if (currentGameIdentifier == "Bird")
-        {
-            ExplorePanel_InRange.SetActive(false);
-            SceneManager.LoadSceneAsync("BirdGameScene", LoadSceneMode.Single);
-        }
-        else if (currentGameIdentifier == "Match")
-        {
-            ExplorePanel_InRange.SetActive(false);
-            SceneManager.LoadSceneAsync("MatchingScene", LoadSceneMode.Single);
-        }
-        else if (currentGameIdentifier == "Word")
-        {
-            ExplorePanel_InRange.SetActive(false);
-            SceneManager.LoadSceneAsync("WordAssociationScene", LoadSceneMode.Single);
-        }
+        ExplorePanel_InRange.SetActive(false);
+        SceneManager.LoadSceneAsync(currentGameIdentifier, LoadSceneMode.Single);
     }
 
     public void CloseExplorePanel()

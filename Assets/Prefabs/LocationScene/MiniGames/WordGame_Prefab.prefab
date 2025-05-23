@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 4496930816834818447}
   - component: {fileID: -6557238726750653531}
   - component: {fileID: 4526963459219690424}
+  - component: {fileID: -7096670678720944928}
   - component: {fileID: 5287180291690597715}
   m_Layer: 0
   m_Name: WordGame_Prefab
@@ -208,7 +209,20 @@ MonoBehaviour:
     x: 0
     y: 0
   eventID: 0
-  gameIdentifier: Word
+  gameIdentifier: {fileID: 102900000, guid: 2081056977291d14491a688758c93118, type: 3}
+--- !u!114 &-7096670678720944928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3899520030806763256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c9182df35abcd4cbd7733c1c594d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yOffset: 0
 --- !u!114 &5287180291690597715
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 5777168012237853380}
   - component: {fileID: -5584111377598211115}
   - component: {fileID: -1046961925026037979}
+  - component: {fileID: 1621202175882655118}
   - component: {fileID: 8248597534125226473}
   m_Layer: 0
   m_Name: MatchGame_Prefab
@@ -208,7 +209,20 @@ MonoBehaviour:
     x: 0
     y: 0
   eventID: 0
-  gameIdentifier: Match
+  gameIdentifier: {fileID: 102900000, guid: e36145bb1dfaae145a2d80922f23ead8, type: 3}
+--- !u!114 &1621202175882655118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5186735023776687486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c9182df35abcd4cbd7733c1c594d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yOffset: 0
 --- !u!114 &8248597534125226473
 MonoBehaviour:
   m_ObjectHideFlags: 0

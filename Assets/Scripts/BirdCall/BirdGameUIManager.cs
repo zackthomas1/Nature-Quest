@@ -15,7 +15,6 @@ public class BirdGameUIManager : MonoBehaviour
 
     [Header("Page 3 Elements")]
     [SerializeField] private Text timerText;
-    [SerializeField] private Button countButton;
     [SerializeField] private Image timerCircle;
     [SerializeField] private float gameDuration = 10f; // 10 seconds game duration FOR NOW
 

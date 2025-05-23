@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/BirdGameScene.unity
     guid: 7c4e35a1ae571084dba94b73ab03d8fb
   - enabled: 1
+    path: Assets/Scenes/MatchingBuckwheatScene.unity
+    guid: 0a7db9319c7834141b53ee310529388d
+  - enabled: 1
     path: Assets/Scenes/MatchingSunflowerScene.unity
     guid: e36145bb1dfaae145a2d80922f23ead8
   m_configObjects:

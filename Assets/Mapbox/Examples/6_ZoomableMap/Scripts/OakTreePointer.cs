@@ -18,7 +18,7 @@ public class OakTreePointer : MonoBehaviour
     public Vector2d eventPos;
     public int eventID;
 
-    [SerializeField] private SceneAsset gameIdentifier;
+    [SerializeField] private string gameIdentifier;
 
     private MenuUIManager menuUIManager;
     private EventManager eventManager;
@@ -58,7 +58,7 @@ public class OakTreePointer : MonoBehaviour
         {
             // Here you have both eventID and gameIdentifier available to choose how to proceed:
             // For example, you can pass both to the UI manager.
-            menuUIManager.DisplayInRangePanel(gameIdentifier.name);
+            menuUIManager.DisplayInRangePanel(gameIdentifier);
         }
         else
         {

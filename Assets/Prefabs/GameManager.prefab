@@ -60,5 +60,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b8f3536cb7a923b4ebd12d2d54bb9e44, type: 2}
   unlockedSprouts:
   - {fileID: 11400000, guid: 35d48dba603cba141b9ebb45b994bc2f, type: 2}
-  - {fileID: 11400000, guid: 68717773d6e512b448d4e90986ad0c63, type: 2}
-  - {fileID: 11400000, guid: 32d81d41c20b0c643b5c0c862b6c5036, type: 2}
+  isPrizePanelActive: 0
+  prizeSprout: {fileID: 0}

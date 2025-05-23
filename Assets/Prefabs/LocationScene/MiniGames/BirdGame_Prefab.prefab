@@ -400,7 +400,7 @@ MonoBehaviour:
     x: 0
     y: 0
   eventID: 0
-  gameIdentifier: Bird
+  gameIdentifier: BirdGameScene
 --- !u!114 &8786784459631393141
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -113,7 +113,7 @@ Use environment variables or Unity's `Resources` folder with `.gitignore` in pla
 ## Project Sponsors
 - UCI Nature
   - Megan Lulow, Ph.D
-  - Julie Cofffey, M.sc
+  - Julie Coffey, M.sc
   - Thanh Le
   - Moises Perea-Vega
 - Matthew Bietz Ph.D     

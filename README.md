@@ -1,5 +1,5 @@
 # Overview
-Nature Quest is an educational mobile game which aim delivery lessons content through interactive mini-games for UCI Ecological Preserve. The game is geolocation based 
+Nature Quest is an educational mobile game that aims to encourage children (k-8) to explore the UCI Ecological Preserve interactively. It introduces engaging minigames, cute “Sprout” characters and fun rewards to make learning about nature interesting and accessible for younger users. The project was built using Unity game engine and developed for Android devices. 
 
 ## Features
 - Geolocation-based exploration tied to the UCI Ecological Preserve
@@ -12,6 +12,25 @@ Nature Quest is an educational mobile game which aim delivery lessons content th
   - Minimum API Level: Android 7.0 'Nougat' (API level 24)
   - Target API Level: Android 14.0 (API level 34)   
 
+# Project Structure
+```
+Nature-Quest/
+├── .vscode/
+├── Assets/
+│   ├── Editor/
+│   ├── Prefabs/
+│   ├── Resources/
+│       ├── components/
+│           ├── Custom/
+│   ├── Scenes
+│   └── Scripts
+├── Packages/
+├── ProjectSettings/
+├── .gitattributes
+├── .gitignore
+├── vsconfig
+└── README.md 
+```
 # Project Setup
 
 ## Development Environment
@@ -41,18 +60,45 @@ Launch the project in the Unity Editor. In the top option bar select "Mabox" -> 
 4. Click `Build and Run`.
 
 ## Known Issues
+- UI responsive layout
+  - Alignment and scale issues on certain devices 
+- Android the only supported mobile platform 
+- Map interactions clunky 
+  - Pinch and zoom, accident clicks
+- Game play testing
+  - Do users understand how to play the mini-games?
+
 - Camera does not always stay centered on player (Mapbox sync issue)
 
 ## TODO
-- Add Sprout Village AR mini-game
-- Store user generated data for later analysis
-- Staff dashboard to allow Ecological Preserve staff to set the location of mini-games themself
+- Admin portal 
+  - Park staff sets mini game location and lesson details
+  - Access collected data
+  - Set up backend database for storing collected data
+- More mini-games with more variation
+  - Highlight more plant and bird species
+  - Sprout Village AR mini-game
+- More custom game assets
+  - Player pawn, site markers, game map
+  - Game audio 
+  - Animation 
+- User authentication and management
+- Expand to more UCI Nature preserve sites
 
 ## Security Note
 Do **not** commit API keys or sensitive data directly in the project files.
 Use environment variables or Unity's `Resources` folder with `.gitignore` in place to prevent exposure.
 
-# Project Sponsors
+# Contributors
+## Team Members
+- Armon Amini | Developer
+- Brandon Smith | UI/UX
+- Giovanna Mancinelli | UI/UX
+- Matthew Duong | Developer
+- Susaanah Liu | Developer
+- Zachary Thomas | Developer
+
+## Project Sponsors
 - UCI Nature
   - Megan Lulow, Ph.D
   - Julie Cofffey, M.sc
